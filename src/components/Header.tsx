@@ -26,7 +26,7 @@ export function Header() {
             <small>Hurtownia kosmetyków i chemii gospodarczej</small>
           </Link>
           <nav className="nav" aria-label="Główne">
-            {NAV.map(([l, h]) => <Link key={h} href={h} className={active(h) ? 'on' : ''}>{l}</Link>)}
+            {NAV.map(([l, h]) => <Link key={h} href={h} className={active(h) ? 'on' : ''} aria-current={active(h) ? 'page' : undefined}>{l}</Link>)}
           </nav>
           <div className="head-act">
             <Link href="/konto-b2b" className="btn btn-line btn-sm">Konto B2B</Link>
@@ -34,11 +34,11 @@ export function Header() {
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 6h16l-1.5 9h-13z" /><path d="M8 6V4h8v2" /><path d="M9 19h.01M15 19h.01" /></svg>
               Zamówienie{ready && count > 0 ? <i>{count}</i> : null}
             </Link>
-            <button className="burger" aria-expanded={open} aria-label="Menu" onClick={() => setOpen((o) => !o)}><span /><span /><span /></button>
+            <button className="burger" aria-expanded={open} aria-controls="menu-mobile" aria-label="Menu" onClick={() => setOpen((o) => !o)}><span /><span /><span /></button>
           </div>
         </div>
       </header>
-      <nav className={'drawer' + (open ? ' open' : '')} aria-label="Menu mobilne">
+      <nav id="menu-mobile" className={'drawer' + (open ? ' open' : '')} aria-label="Menu mobilne">
         {NAV.map(([l, h]) => <Link key={h} href={h}>{l}</Link>)}
         <Link href="/konto-b2b">Konto B2B</Link>
       </nav>

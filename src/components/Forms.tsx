@@ -29,7 +29,7 @@ export function ApplicationForm() {
       <label>Czym handlujecie, jakie marki Was interesują<textarea name="message" rows={3} /></label>
       {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
       <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij wniosek'}</button>
-      <p className="note">Wniosek trafia do działu obsługi klientów hurtowych. Po weryfikacji dostajesz login, cennik i warunki płatności.</p>
+      <p className="note">Wniosek trafia do działu obsługi klientów hurtowych. Po weryfikacji dostajesz login, cennik i warunki płatności. Wersja demonstracyjna: dane trafiają do testowego panelu Programo i są kasowane, nie wpisuj prawdziwych danych osobowych.</p>
     </form>
   )
 }
@@ -49,6 +49,7 @@ export function ContactForm({ departments }: { departments: string[] }) {
       <label>Wiadomość<textarea name="body" rows={5} required /></label>
       {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
       <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij wiadomość'}</button>
+      <p className="note">Wersja demonstracyjna: dane trafiają do testowego panelu Programo i są kasowane, nie wpisuj prawdziwych danych osobowych.</p>
     </form>
   )
 }
@@ -119,7 +120,7 @@ export function OrderPage() {
         <label>Uwagi<textarea name="note" rows={2} placeholder="Termin dostawy, palety, faktura zbiorcza" /></label>
         {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
         <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij zamówienie'}</button>
-        <p className="note">Docelowo: płatność online (Przelewy24, BLIK) albo kredyt kupiecki dla stałych klientów. W demie zamówienie ląduje w panelu.</p>
+        <p className="note">Docelowo: płatność online (Przelewy24, BLIK) albo kredyt kupiecki dla stałych klientów. Wersja demonstracyjna: dane trafiają do testowego panelu Programo i są kasowane, nie wpisuj prawdziwych danych osobowych.</p>
       </form>
     </div></div>
   )

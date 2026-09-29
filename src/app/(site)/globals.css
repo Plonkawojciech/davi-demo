@@ -5,7 +5,7 @@
 :root{
   --navy:#1B2570; --navy-2:#141B52; --navy-soft:#E8EBF7;
   --porcelain:#F4F5F8; --paper:#fff; --ink:#12152B; --grey:#6B7185; --edge:rgba(18,21,43,.12); --edge-soft:rgba(18,21,43,.07);
-  --coral:#E4573D; --coral-lift:#F06A50;
+  --coral:#B9422E; --coral-lift:#A33A28;
   --wrap:1240px; --gut:22px; --r:8px;
   --t:.28s cubic-bezier(.2,.7,.3,1);
 }

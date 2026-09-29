@@ -8,7 +8,7 @@ const KINDS: [string, string][] = [['shop', 'Drogeria / sklep stacjonarny'], ['e
 
 export function ApplicationForm() {
   const [state, action, pending] = useActionState<FormState, FormData>(createApplication, { ok: false, message: '' })
-  if (state.ok) return <div className="done"><strong>Dziękujemy.</strong> {state.message}</div>
+  if (state.ok) return <div className="done" role="status"><strong>Dziękujemy.</strong> {state.message}</div>
   return (
     <form action={action} className="form">
       <div className="form-row">
@@ -27,7 +27,7 @@ export function ApplicationForm() {
         <label>Telefon<input name="phone" type="tel" required autoComplete="tel" /></label>
       </div>
       <label>Czym handlujecie, jakie marki Was interesują<textarea name="message" rows={3} /></label>
-      {state.message && !state.ok && <p className="form-err">{state.message}</p>}
+      {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
       <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij wniosek'}</button>
       <p className="note">Wniosek trafia do działu obsługi klientów hurtowych. Po weryfikacji dostajesz login, cennik i warunki płatności.</p>
     </form>
@@ -36,7 +36,7 @@ export function ApplicationForm() {
 
 export function ContactForm({ departments }: { departments: string[] }) {
   const [state, action, pending] = useActionState<FormState, FormData>(createMessage, { ok: false, message: '' })
-  if (state.ok) return <div className="done"><strong>Wysłane.</strong> {state.message}</div>
+  if (state.ok) return <div className="done" role="status"><strong>Wysłane.</strong> {state.message}</div>
   return (
     <form action={action} className="form">
       <label>Temat
@@ -47,7 +47,7 @@ export function ContactForm({ departments }: { departments: string[] }) {
         <label>E-mail<input name="email" type="email" required autoComplete="email" /></label>
       </div>
       <label>Wiadomość<textarea name="body" rows={5} required /></label>
-      {state.message && !state.ok && <p className="form-err">{state.message}</p>}
+      {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
       <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij wiadomość'}</button>
     </form>
   )
@@ -63,10 +63,10 @@ export function OrderPage() {
 
   if (state.ok) return (
     <div className="section"><div className="wrap">
-      <div className="done big">
+      <div className="done big" role="status">
         <p className="kicker" style={{ margin: 0 }}>Zamówienie {state.number}</p>
         <h1 className="h2">Przyjęliśmy zamówienie</h1>
-        <p className="lead" style={{ marginTop: 0 }}>Handlowiec potwierdzi dostępność i wyśle wycenę na e-mail. Po uruchomieniu płatności online w tym miejscu klient z kontem B2B zapłaci od razu albo wybierze termin płatności.</p>
+        <p className="lead" style={{ marginTop: 0 }}>Handlowiec potwierdzi dostępność i wyśle wycenę na e-mail. Docelowo klient z kontem B2B zobaczy tu ceny i wybierze płatność online albo termin płatności.</p>
         <Link className="btn btn-solid" href="/produkty">Wróć do katalogu</Link>
       </div>
     </div></div>
@@ -92,9 +92,9 @@ export function OrderPage() {
                 <Link href={`/produkt/${l.slug}`} className="nm">{l.name}</Link>
                 <div className="vr">{l.sku}{l.size ? ` · ${l.size}` : ''}</div>
                 <div className="qty">
-                  <button type="button" onClick={() => setQty(l.id, l.qty - 1)} aria-label="Mniej">−</button>
+                  <button type="button" onClick={() => setQty(l.id, l.qty - (l.step || 1))} aria-label="Mniej">−</button>
                   <output>{l.qty}</output>
-                  <button type="button" onClick={() => setQty(l.id, l.qty + 1)} aria-label="Więcej">+</button>
+                  <button type="button" onClick={() => setQty(l.id, l.qty + (l.step || 1))} aria-label="Więcej">+</button>
                 </div>
                 <button type="button" className="rm" onClick={() => remove(l.id)}>Usuń</button>
               </div>
@@ -117,7 +117,7 @@ export function OrderPage() {
         </div>
         <label>Adres dostawy<textarea name="address" rows={2} autoComplete="street-address" /></label>
         <label>Uwagi<textarea name="note" rows={2} placeholder="Termin dostawy, palety, faktura zbiorcza" /></label>
-        {state.message && !state.ok && <p className="form-err">{state.message}</p>}
+        {state.message && !state.ok && <p className="form-err" role="alert">{state.message}</p>}
         <button className="btn btn-accent" disabled={pending}>{pending ? 'Wysyłanie…' : 'Wyślij zamówienie'}</button>
         <p className="note">Docelowo: płatność online (Przelewy24, BLIK) albo kredyt kupiecki dla stałych klientów. W demie zamówienie ląduje w panelu.</p>
       </form>

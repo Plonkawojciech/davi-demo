@@ -4,7 +4,7 @@ export const Messages: CollectionConfig = {
   slug: 'messages',
   labels: { singular: 'Wiadomość', plural: 'Wiadomości z formularza' },
   admin: { useAsTitle: 'subject', group: 'Sprzedaż', defaultColumns: ['subject', 'department', 'email', 'createdAt'] },
-  access: { create: () => true },
+  access: { create: () => false, read: ({ req }) => !!req.user },
   fields: [
     { name: 'department', label: 'Dział', type: 'text' },
     { name: 'subject', label: 'Temat', type: 'text', required: true },

@@ -69,8 +69,8 @@ export default async function Home() {
       <section className="section navy"><div className="wrap split">
         <div>
           <p className="kicker">Konto B2B</p>
-          <h2 className="h2">Ceny hurtowe, historia zamówień i płatność online w jednym miejscu</h2>
-          <p className="lead">Po weryfikacji NIP dostajesz dostęp do cennika, rabatów i faktur. Zamówienie składasz z listy, płacisz od razu albo na termin.</p>
+          <h2 className="h2">Ceny hurtowe, historia zamówień i faktury w jednym miejscu</h2>
+          <p className="lead">Po weryfikacji NIP dostajesz dostęp do cennika, rabatów i faktur. Zamówienie składasz z jednej listy. Płatność online i kredyt kupiecki dla stałych klientów to kolejny etap wdrożenia.</p>
           <div className="cta-row"><Link className="btn btn-accent" href="/konto-b2b">Złóż wniosek</Link><Link className="btn btn-line" href="/wspolpraca">Warunki współpracy</Link></div>
         </div>
         <ol className="steps">

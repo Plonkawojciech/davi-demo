@@ -9,7 +9,7 @@ export const Orders: CollectionConfig = {
     defaultColumns: ['number', 'company', 'nip', 'itemsCount', 'status', 'createdAt'],
     description: 'Zamówienia złożone z listy na stronie. Ceny i potwierdzenie ustala handlowiec.',
   },
-  access: { create: () => true },
+  access: { create: () => false, read: ({ req }) => !!req.user },
   fields: [
     { name: 'number', label: 'Numer', type: 'text', required: true, unique: true },
     {

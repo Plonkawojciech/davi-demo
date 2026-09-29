@@ -4,7 +4,7 @@ export const Applications: CollectionConfig = {
   slug: 'applications',
   labels: { singular: 'Wniosek o konto B2B', plural: 'Wnioski o konto B2B' },
   admin: { useAsTitle: 'company', group: 'Sprzedaż', defaultColumns: ['company', 'nip', 'kind', 'contact', 'phone', 'status', 'createdAt'] },
-  access: { create: () => true },
+  access: { create: () => false, read: ({ req }) => !!req.user },
   fields: [
     {
       type: 'row',

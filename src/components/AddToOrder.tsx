@@ -15,7 +15,7 @@ export function AddToOrder({ product, packQty, available }: { product: { id: num
           <output>{qty}</output>
           <button type="button" onClick={() => setQty((q) => q + step)} aria-label="Więcej">+</button>
         </div>
-        <button type="button" className="btn btn-accent" disabled={!available} onClick={() => { add(product, qty); setDone(true); setTimeout(() => setDone(false), 2200) }}>
+        <button type="button" className="btn btn-accent" disabled={!available} onClick={() => { add({ ...product, step: packQty || 1 }, qty); setDone(true); setTimeout(() => setDone(false), 2200) }}>
           {done ? 'Dodano do zamówienia' : available ? 'Dodaj do zamówienia' : 'Chwilowo niedostępny'}
         </button>
       </div>

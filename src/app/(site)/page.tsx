@@ -8,7 +8,7 @@ export default async function Home() {
     payload.findGlobal({ slug: 'settings' }),
     payload.find({ collection: 'brands', where: { featured: { equals: true } }, sort: 'order', limit: 8 }),
     payload.find({ collection: 'products', where: { isNew: { equals: true } }, limit: 4, depth: 1 }),
-    payload.find({ collection: 'products', where: { featured: { equals: true } }, limit: 8, depth: 1 }),
+    payload.find({ collection: 'products', where: { featured: { equals: true } }, limit: 4, depth: 1 }),
     payload.find({ collection: 'categories', sort: 'order', limit: 12 }),
   ])
   const hero = pic({ image: s.heroImage, imageUrl: s.heroImageUrl }, 'full')
